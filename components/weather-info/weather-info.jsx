@@ -25,7 +25,7 @@ const WeatherInfo = ({ weatherData, isFetching, error }) => {
   }
 
   return (
-    <div className="flex gap-2 shadow-lg py-10 px-5 bg-white sm:rounded-xl w-full lg:w-2/3 items-center">
+    <div className="flex flex-col gap-2 shadow-lg py-10 px-10 bg-white sm:rounded-xl w-full lg:w-2/3">
       <div className="flex justify-between w-full items-center">
         <div className="flex gap-10 justify-center items-center">
           <div>
@@ -34,17 +34,24 @@ const WeatherInfo = ({ weatherData, isFetching, error }) => {
               {weatherData.location.region} , {weatherData.location.country}
             </span>
           </div>
-          <div className="text-5xl font-bold items-center justify-center flex">
-            <img
-              className="w-24"
-              src={`http://${weatherData.current.condition.icon}`}
-            />
-            {weatherData.current.temp_c}°C
-          </div>
         </div>
-        <div></div>
-        <div className="font-bold">
-          Wind Speed : {weatherData.current.wind_kph} KPH
+        <div className="text-5xl font-bold items-center justify-center flex">
+          <img
+            className="w-24"
+            src={`http://${weatherData.current.condition.icon}`}
+          />
+          {weatherData.current.temp_c}°C
+        </div>
+      </div>
+      <div className="flex justify-between">
+        <div className="mt-16 flex flex-col md:flex-row gap-3">
+          <p className="font-bold">Wind Speed & Degree : </p>
+          <span className="italic">{weatherData.current.wind_kph} KPH</span>
+          <span className="italic">{weatherData.current.wind_mph} MPH</span>
+          <span className="italic">{weatherData.current.wind_degree}°</span>
+          <span className="italic">
+            Direction :{weatherData.current.wind_dir}
+          </span>
         </div>
       </div>
     </div>
